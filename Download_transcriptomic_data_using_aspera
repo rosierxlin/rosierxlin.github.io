@@ -77,8 +77,7 @@ nano ~/Seqs/sra_list.txt
 /vol1/fastq/SRR638/003/SRR6382573/SRR6382573_2.fastq.gz
 #press ctrl+O and ctrl+X to save
 #call aspera to read the list and download it to the directory ~/Seqs/
-ascp -v -QT  -k1 -l 200m -P33001 --mode recv -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh --host fasp.sra.ebi.ac.uk 
---user era-fasp --file-list ~/Seqs/sra_list.txt ~/Seqs/
+nohup ascp -v -QT  -k1 -l 200m -P33001 --mode recv -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh --host fasp.sra.ebi.ac.uk --user era-fasp --file-list ~/Seqs/sra_list.txt ~/Seqs/ &
 
 
 
