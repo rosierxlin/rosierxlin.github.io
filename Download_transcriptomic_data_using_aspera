@@ -1,0 +1,13 @@
+#Install Aspera to the environment 
+wget https://download.asperasoft.com/download/sw/connect/3.9.1/ibm-aspera-connect-3.9.1.171801-linux-g2.12-64.tar.gz
+tar zxvf ibm-aspera-connect-3.9.1.171801-linux-g2.12-64.tar.gz
+# Install 
+bash ibm-aspera-connect-3.9.1.171801-linux-g2.12-64.sh 
+# Check if aspera has been successfully installed
+cd # go to home file
+ls -a # if there is .aspera file, the installation has been successful
+# Perminantly change the environment variables
+echo 'export PATH=~/.aspera/connect/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc 
+# check "help"
+ascp --help
