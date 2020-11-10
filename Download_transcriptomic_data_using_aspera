@@ -11,3 +11,87 @@ echo 'export PATH=~/.aspera/connect/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc 
 # check "help"
 ascp --help
+#set directory to store the list of download link
+mkdir ~/Seqs
+nano ~/Seqs/sra_list.txt
+#paste the below sequences into nano
+/vol1/fastq/SRR638/000/SRR6382540/SRR6382540_1.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382540/SRR6382540_2.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382541/SRR6382541_1.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382541/SRR6382541_2.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382542/SRR6382542_1.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382542/SRR6382542_2.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382543/SRR6382543_1.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382543/SRR6382543_2.fastq.gz
+/vol1/fastq/SRR638/004/SRR6382544/SRR6382544_1.fastq.gz
+/vol1/fastq/SRR638/004/SRR6382544/SRR6382544_2.fastq.gz
+/vol1/fastq/SRR638/005/SRR6382545/SRR6382545_1.fastq.gz
+/vol1/fastq/SRR638/005/SRR6382545/SRR6382545_2.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382546/SRR6382546_1.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382546/SRR6382546_2.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382547/SRR6382547_1.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382547/SRR6382547_2.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382548/SRR6382548_1.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382548/SRR6382548_2.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382549/SRR6382549_1.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382549/SRR6382549_2.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382550/SRR6382550_1.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382550/SRR6382550_2.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382551/SRR6382551_1.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382551/SRR6382551_2.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382556/SRR6382556_1.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382556/SRR6382556_2.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382557/SRR6382557_1.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382557/SRR6382557_2.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382558/SRR6382558_1.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382558/SRR6382558_2.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382559/SRR6382559_1.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382559/SRR6382559_2.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382560/SRR6382560_1.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382560/SRR6382560_2.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382561/SRR6382561_1.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382561/SRR6382561_2.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382562/SRR6382562_1.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382562/SRR6382562_2.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382563/SRR6382563_1.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382563/SRR6382563_2.fastq.gz
+/vol1/fastq/SRR638/004/SRR6382564/SRR6382564_1.fastq.gz
+/vol1/fastq/SRR638/004/SRR6382564/SRR6382564_2.fastq.gz
+/vol1/fastq/SRR638/005/SRR6382565/SRR6382565_1.fastq.gz
+/vol1/fastq/SRR638/005/SRR6382565/SRR6382565_2.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382566/SRR6382566_1.fastq.gz
+/vol1/fastq/SRR638/006/SRR6382566/SRR6382566_2.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382567/SRR6382567_1.fastq.gz
+/vol1/fastq/SRR638/007/SRR6382567/SRR6382567_2.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382568/SRR6382568_1.fastq.gz
+/vol1/fastq/SRR638/008/SRR6382568/SRR6382568_2.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382569/SRR6382569_1.fastq.gz
+/vol1/fastq/SRR638/009/SRR6382569/SRR6382569_2.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382570/SRR6382570_1.fastq.gz
+/vol1/fastq/SRR638/000/SRR6382570/SRR6382570_2.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382571/SRR6382571_1.fastq.gz
+/vol1/fastq/SRR638/001/SRR6382571/SRR6382571_2.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382572/SRR6382572_1.fastq.gz
+/vol1/fastq/SRR638/002/SRR6382572/SRR6382572_2.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382573/SRR6382573_1.fastq.gz
+/vol1/fastq/SRR638/003/SRR6382573/SRR6382573_2.fastq.gz
+#press ctrl+O and ctrl+X to save
+#call aspera to read the list and download it to the directory ~/Seqs/
+ascp -v -QT  -k1 -l 200m -P33001 --mode recv -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh --host fasp.sra.ebi.ac.uk 
+--user era-fasp --file-list ~/Seqs/sra_list.txt ~/Seqs/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
