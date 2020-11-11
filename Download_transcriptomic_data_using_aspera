@@ -85,6 +85,10 @@ wget  ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zi
 wget ftp://parrot.genomics.cn/gigadb/pub/10.5524/100001_101000/100463/final_genome.fasta
 #build genome index using hisat2
 hisat2-build final_genome.fasta Ssp_gen_index
+#make a directory to store the .sam output
+mkdir ~/samfle
+#use hisat2 to run the alignment, demonstrated as follow
+nohup hisat2 -p 16 --dta -x ~/Ssp_gen_ind/Ssp_gen_index -1 ~/Seqs/SRR6382540_1.fastq.gz -2 ~/Seqs/SRR6382540_2.fastq.gz -S ~/samfile/SRR6382540.sam &
 
 
 
