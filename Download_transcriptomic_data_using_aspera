@@ -79,6 +79,12 @@ nano ~/Seqs/sra_list.txt
 #call aspera to read the list and download it to the directory ~/Seqs/
 nohup ascp -v -QT  -k1 -l 200m -P33001 --mode recv -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh --host fasp.sra.ebi.ac.uk --user era-fasp --file-list ~/Seqs/sra_list.txt ~/Seqs/ &
 
+#install hisat2 to map the transcriptomic data onto reference genome 
+wget  ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zip
+#download Salvia splendens reference genome
+wget ftp://parrot.genomics.cn/gigadb/pub/10.5524/100001_101000/100463/final_genome.fasta
+#build genome index using hisat2
+hisat2-build final_genome.fasta Ssp_gen_index
 
 
 
