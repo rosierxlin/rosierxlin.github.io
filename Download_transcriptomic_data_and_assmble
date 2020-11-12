@@ -114,7 +114,38 @@ nohup samtools sort -@ 4 -o ${i}.sort.bam ${i}.bam &
 done
 #run the loop
 bash sort.sh
-
+#To visualize the arranged .bam files, first index these files
+nohup samtools index SRR6382540.sort.bam &
+nohup samtools index SRR6382541.sort.bam &
+nohup samtools index SRR6382542.sort.bam &
+nohup samtools index SRR6382543.sort.bam &
+nohup samtools index SRR6382544.sort.bam &
+nohup samtools index SRR6382545.sort.bam &
+nohup samtools index SRR6382546.sort.bam &
+nohup samtools index SRR6382547.sort.bam &
+nohup samtools index SRR6382548.sort.bam &
+nohup samtools index SRR6382549.sort.bam &
+nohup samtools index SRR6382550.sort.bam &
+nohup samtools index SRR6382551.sort.bam &
+nohup samtools index SRR6382556.sort.bam &
+nohup samtools index SRR6382557.sort.bam &
+nohup samtools index SRR6382558.sort.bam &
+nohup samtools index SRR6382559.sort.bam &
+nohup samtools index SRR6382560.sort.bam &
+nohup samtools index SRR6382561.sort.bam &
+nohup samtools index SRR6382562.sort.bam &
+nohup samtools index SRR6382563.sort.bam &
+nohup samtools index SRR6382564.sort.bam &
+nohup samtools index SRR6382565.sort.bam &
+nohup samtools index SRR6382566.sort.bam &
+nohup samtools index SRR6382567.sort.bam &
+nohup samtools index SRR6382568.sort.bam &
+nohup samtools index SRR6382569.sort.bam &
+nohup samtools index SRR6382570.sort.bam &
+nohup samtools index SRR6382571.sort.bam &
+nohup samtools index SRR6382572.sort.bam &
+nohup samtools index SRR6382573.sort.bam &
+#visualize the results
 
 
 
