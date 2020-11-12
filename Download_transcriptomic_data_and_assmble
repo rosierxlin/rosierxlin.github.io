@@ -146,6 +146,36 @@ nohup samtools index SRR6382571.sort.bam &
 nohup samtools index SRR6382572.sort.bam &
 nohup samtools index SRR6382573.sort.bam &
 #visualize the results
+nohup samtools tview SRR6382540.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382541.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382542.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382543.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382544.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382545.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382546.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382547.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382548.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382549.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382550.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382551.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382556.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382557.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382558.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382559.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382560.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382561.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382562.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382563.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382564.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382565.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382566.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382567.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382568.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382569.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382570.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382571.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382572.sort.bam ~/final_genome.fasta &
+nohup samtools tview SRR6382573.sort.bam ~/final_genome.fasta &
 
 
 
