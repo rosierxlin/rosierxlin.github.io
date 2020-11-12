@@ -104,6 +104,16 @@ nohup samtools view -bhS  -t ~/final_genome.fasta.fai -@ 2 -o ${i}.bam ${i}.sam 
 done
 #run the loop
 bash view.sh
+#arrange the content in .bam files in sequential order
+vi sort.sh
+for i in ~/samfile/*.bam;
+do 
+i=${i%.bam*};
+echo ${i};
+nohup samtools sort -@ 4 -o ${i}.sort.bam ${i}.bam & 
+done
+#run the loop
+bash sort.sh
 
 
 
