@@ -81,8 +81,9 @@ nohup ascp -v -QT  -k1 -l 200m -P33001 --mode recv -i ~/.aspera/connect/etc/aspe
 
 #install hisat2 to map the transcriptomic data onto reference genome 
 wget  ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-source.zip
-#download Salvia splendens reference genome
+#download Salvia splendens reference genome and gene annotation
 wget ftp://parrot.genomics.cn/gigadb/pub/10.5524/100001_101000/100463/final_genome.fasta
+wget ftp://parrot.genomics.cn/gigadb/pub/10.5524/100001_101000/100463/protein_encoding_gene.gff3
 #build genome index using hisat2
 hisat2-build final_genome.fasta Ssp_gen_index
 #make a directory to store the .sam output
@@ -178,11 +179,67 @@ nohup samtools tview SRR6382571.sort.bam ~/final_genome.fasta &
 nohup samtools tview SRR6382572.sort.bam ~/final_genome.fasta &
 nohup samtools tview SRR6382573.sort.bam ~/final_genome.fasta &
 
+#assemble the data using stringtie
+vi stringtie1.sh
+for i in ~/samfile/*sort.bam; 
+do 
+i=${i%.sort.bam*}; 
+echo ${i};
+nohup stringtie -p 8 -G  ~/protein_encoding_gene.gff3 
+ -o ${i}.gff3 -l  ${i} ${i}.sort.bam & 
+done
 
+#Merge the transcripts. First, set up mergelist
+cd ~/samfile
 
+vi mergelist.txt
+SRR6382540.gff3
+SRR6382541.gff3
+SRR6382542.gff3
+SRR6382543.gff3
+SRR6382544.gff3
+SRR6382545.gff3
+SRR6382546.gff3
+SRR6382547.gff3
+SRR6382548.gff3
+SRR6382549.gff3
+SRR6382550.gff3
+SRR6382551.gff3
+SRR6382556.gff3
+SRR6382557.gff3
+SRR6382558.gff3
+SRR6382559.gff3
+SRR6382560.gff3
+SRR6382561.gff3
+SRR6382562.gff3
+SRR6382563.gff3
+SRR6382564.gff3
+SRR6382565.gff3
+SRR6382566.gff3
+SRR6382567.gff3
+SRR6382568.gff3
+SRR6382569.gff3
+SRR6382570.gff3
+SRR6382571.gff3
+SRR6382572.gff3
+SRR6382573.gff3
 
+#merge all the transcripts
+nohup stringtie --merge -p 8 -G ~/protein_encoding_gene.gff3   -o stringtie_merged.gff3  mergelist.txt &
 
+#use gffCompare to determine how many transcripts are fully or partially matched to annotated genes, and calculate how many of them are new
+nohup gffcompare -r  ~/protein_encoding_gene.gff3  -G  -o merged ~/samfile/stringtie_merged.gff3 &
 
+#re-assemble the transcripts and estimates the gene abundancy
+cd ~/samfile
+
+vi reassemble.sh
+for i in *.sort.bam; 
+do 
+i=${i%.sort.bam*}; 
+echo ${i};
+nohup stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/${i}/${i}.gtf  ${i}.sort.bam & 
+done
 
 
 
