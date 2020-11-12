@@ -241,8 +241,12 @@ echo ${i};
 nohup stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/${i}/${i}.gtf  ${i}.sort.bam & 
 done
 
-
-
+#Use DEseq2 for gene expression analysis
+#first, convert the .ballgown file into .csv file for deseq2
+#download the Python script, prepDE.py
+wget  http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
+#use prepDE.py for convertion
+prepDE.py -i ~/samfile/ballgown
 
 
 
