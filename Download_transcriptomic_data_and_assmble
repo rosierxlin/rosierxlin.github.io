@@ -146,6 +146,7 @@ nohup samtools index SRR6382571.sort.bam &
 nohup samtools index SRR6382572.sort.bam &
 nohup samtools index SRR6382573.sort.bam &
 #visualize the results
+cd ~/samfile
 nohup samtools tview SRR6382540.sort.bam ~/final_genome.fasta &
 nohup samtools tview SRR6382541.sort.bam ~/final_genome.fasta &
 nohup samtools tview SRR6382542.sort.bam ~/final_genome.fasta &
