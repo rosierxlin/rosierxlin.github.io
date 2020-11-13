@@ -238,7 +238,7 @@ for i in *.sort.bam;
 do 
 i=${i%.sort.bam*}; 
 echo ${i};
-nohup stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/${i}/${i}.gtf  ${i}.sort.bam & 
+nohup stringtie -e -B -p 8 -G stringtie_merged.gff3 -o ballgown/${i}/${i}.gff3  ${i}.sort.bam & 
 done
 
 #Use DEseq2 for gene expression analysis
