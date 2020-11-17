@@ -241,13 +241,19 @@ echo ${i};
 nohup stringtie -e -B -p 8 -G stringtie_merged.gff3 -o ballgown/${i}/${i}.gff3  ${i}.sort.bam & 
 done
 
-#Use DEseq2 for gene expression analysis
-#first, convert the .ballgown file into .csv file for deseq2
-#download the Python script, prepDE.py
-wget  http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
-#use prepDE.py for convertion
-prepDE.py -i ~/samfile/ballgown
-
+#Get the FPKM values of the assembled transcripts
+#First, get into R environment use conda
+conda activate R
+R
+#run ballgown (if need to install, seek help from bioconductor)
+require(ballgown)
+my.data = ballgown(dataDir='~/samfile/ballgown', samplePattern='SRR63825*', meas='all')
+my.data.table <- texpr(my.data, 'all')
+my.data.table$ID1 <- paste(my.data.table$start, my.data.table$end, sep = "..")
+my.data.table$ID2 <- paste(my.data.table$chr, my.data.table$ID1, sep = ":")
+my.data.table$ID3 <- paste(my.data.table$ID2, my.data.table$strand, sep = " (")
+my.data.table$ID <- paste(my.data.table$ID3, "strand)")
+#later remover ID1, ID2 and ID3
 
 
 
