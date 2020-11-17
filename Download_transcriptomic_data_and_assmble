@@ -254,6 +254,7 @@ my.data.table$ID2 <- paste(my.data.table$chr, my.data.table$ID1, sep = ":")
 my.data.table$ID3 <- paste(my.data.table$ID2, my.data.table$strand, sep = " (")
 my.data.table$ID <- paste(my.data.table$ID3, "strand)")
 #later remover ID1, ID2 and ID3
-
+#export the .csv file
+write.csv(my.data.table,file = "Ssp_fpkm.csv", row.names = FALSE)
 
 
