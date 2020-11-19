@@ -257,4 +257,7 @@ my.data.table$ID <- paste(my.data.table$ID3, "strand)")
 #export the .csv file
 write.csv(my.data.table,file = "Ssp_fpkm.csv", row.names = FALSE)
 
+#If cufflink/cuffdiff is used, use the following codes after using samtool:
+mkdir cuffdiff_output
+cuffdiff -p 4 -o ~/cuffdiff_output  ~/protein_encoding_gene.gff3 ~/samfile/*sort.sam 
 
