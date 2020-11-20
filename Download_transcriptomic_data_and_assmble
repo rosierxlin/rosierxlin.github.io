@@ -261,3 +261,22 @@ write.csv(my.data.table,file = "Ssp_fpkm.csv", row.names = FALSE)
 mkdir cuffdiff_output
 cuffdiff -p 4 -o ~/cuffdiff_output  ~/protein_encoding_gene.gff3 ~/samfile/*sort.sam 
 
+#If STAR is used for mapping, use the following conmmands:
+STAR --runThreadN 8 --runMode genomeGenerate --genomeDir ~/star --genomeFastaFiles ~/final_genome.fasta --sjdbGTFfile ~/protein_encoding_gene.gff3 
+
+
+nohup STAR \
+    --genomeDir ~/star \
+    --genomeSAsparseD 3\
+    --genomeSAindexNbases 12\
+    --genomeChrBinNbits 14\
+    --runThreadN 20 \
+    --readFilesIn ~/Seqs/SRR6382540_1.fastq.gz ~/Seqs/SRR6382540_2.fastq.gz\
+    --readFilesCommand zcat \
+    --outFileNamePrefix ~/samoutput/SRR6382540 \
+    --outSAMtype BAM SortedByCoordinate \
+    --outBAMsortingThreadN 10 &
+
+
+
+
