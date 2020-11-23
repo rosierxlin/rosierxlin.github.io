@@ -1,0 +1,11 @@
+#First, convert the .gff3 file to .gtf file
+gffread protein_encoding_gene.gff3 -T -o protein_encoding_gene.gtf
+
+#Next, extract the coding sequence data from genome sequence
+gffread protein_encoding_gene.gtf -g final_genome.fasta -x cds.fa
+
+#Then, use grep to extract the genes of interest (identified from SOM) 
+#Copy the ID of all the genes of interest into a txt file named "interesting_genes.txt"
+awk '{print $1".T1"}' interesting_genes.txt >interesting_genes_2.txt #tailor the txt file
+seqkit grep -f interesting_genes_2.txt cds.fa > genes_of_interest.fa
+
