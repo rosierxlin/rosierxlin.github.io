@@ -1,11 +1,22 @@
 #First, convert the .gff3 file to .gtf file
 gffread protein_encoding_gene.gff3 -T -o protein_encoding_gene.gtf
 
-#Next, extract the coding sequence data from genome sequence
-gffread protein_encoding_gene.gtf -g final_genome.fasta -x cds.fa
+#Next, extract the protein sequence data from genome sequence
+gffread protein_encoding_gene.gtf -g final_genome.fasta -w protein_seqs.fa
 
 #Then, use grep to extract the genes of interest (identified from SOM) 
 #Copy the ID of all the genes of interest into a txt file named "interesting_genes.txt"
 awk '{print $1".T1"}' interesting_genes.txt >interesting_genes_2.txt #tailor the txt file
-seqkit grep -f interesting_genes_2.txt cds.fa > genes_of_interest.fa
+seqkit grep -f interesting_genes_2.txt protein_seqs.fa > genes_of_interest.fa
 
+#Get the Swiss-Prot fasta file
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+
+#unzip the package
+unzip uniprot_sprot.fasta.gz
+
+#make a blast database using the swiss-prot file
+makeblastdb -in uniprot_sprot.fasta -dbtype prot -parse_seqids -hash_index -out uniprot
+
+#match the protein sequence of interest to the database
+blastp -query ~/genes_of_interest.fa -out swiss-prot.tab -db uniprot -evalue 1e-5 -outfmt 7
