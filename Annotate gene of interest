@@ -19,4 +19,4 @@ unzip uniprot_sprot.fasta.gz
 makeblastdb -in uniprot_sprot.fasta -dbtype prot -parse_seqids -hash_index -out uniprot
 
 #match the protein sequence of interest to the database
-blastp -query ~/genes_of_interest.fa -out swiss-prot.tab -db uniprot -evalue 1e-5 -outfmt 7
+nohup blastp -query ~/genes_of_interest.fa -out splendens.tab -db uniprot -evalue 1e-5  -outfmt '6 qseqid stitle' -max_target_seqs 1 -num_threads 5 &
