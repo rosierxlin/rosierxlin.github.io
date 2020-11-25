@@ -20,3 +20,13 @@ makeblastdb -in uniprot_sprot.fasta -dbtype prot -parse_seqids -hash_index -out 
 
 #match the protein sequence of interest to the database
 nohup blastp -query ~/genes_of_interest.fa -out splendens.tab -db uniprot -evalue 1e-5  -outfmt '6 qseqid stitle' -max_target_seqs 1 -num_threads 5 &
+
+#Alternatively, make a blast databse using RefSeq (NCBI)
+#download the file in need 
+nohup wget -4  -nd -np -r 1 -A *.faa.gz ftp://ftp.ncbi.nlm.nih.gov/refseq/release/plant/ &
+mkdir -p ~/RefSeq_database
+zcat *.faa.gz > ~/RefSeq_database/plant.protein.faa
+#build index
+makeblastdb -in plant.protein.faa -dbtype prot -parse_seqids -title RefSeq_plant -out plant
+#blastx search. Note, this is because the imput query file (genes_of_interest.fa) is a NUCLEOTIDE ACID sequence file instead of an amino acid sequence file
+nohup blastx -query ~/genes_of_interest.fa -out splendens.tab -db plant -evalue 1e-5  -outfmt '6 qseqid stitle' -max_target_seqs 1 -num_threads 12 &
