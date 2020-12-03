@@ -1,0 +1,18 @@
+#Step 1: install hmmer
+conda create --name hmmer
+conda activate hmmer
+conda install hmmer=3.3.1
+
+#Step 2: download Pfam database
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam33.1/Pfam-A.hmm.gz
+gunzip Pfam-A.hmm.gz
+
+#Step 3: index Pfam database
+hmmpress Pfam-A.hmm
+
+#Step 4: download the .hmm file for the gene family of interest, then use hmmsearch to find those that contain the target domain
+hmmsearch -A0 -E 1e-5 -o splendens_p450.out  ./p450.hmm ~/Salvia_splendens/protein_encoding_gene.pep.fa 
+grep 'Saspl' splendens_p450.out | awk '{print $9}' > splendens_p450_e-50.txt
+
+#count how many seqs there are
+grep -o Saspl splendens_p450_e-50.txt | wc -l
